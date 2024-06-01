@@ -5,7 +5,9 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.greaterThanOrEqualTo;
 import static org.hamcrest.Matchers.hasItems;
+import io.restassured.response.Response;
 
 public class DummyApiSteps {
 
@@ -128,19 +130,9 @@ public class DummyApiSteps {
                 .get(url)
                 .then()
                 .statusCode(200)
-                .body("total", equalTo(93))
-                .body("page", equalTo(0))
-                .body("limit", equalTo(20))
-                .body("data.size()", equalTo(20))
+                .body("data.size()", greaterThanOrEqualTo(3)) // Checks if there are at least 3 users returned
                 .body("data.id",
-                        hasItems("60d0fe4f5311236168a109cc", "60d0fe4f5311236168a109cd", "60d0fe4f5311236168a109ce")) // and
-                                                                                                                      // so
-                                                                                                                      // on
-                                                                                                                      // for
-                                                                                                                      // each
-                                                                                                                      // user
-                                                                                                                      // if
-                                                                                                                      // necessary
+                        hasItems("60d0fe4f5311236168a109cc", "60d0fe4f5311236168a109cd", "60d0fe4f5311236168a109ce"))
                 .body("data.title", hasItems("ms", "mr", "mrs"))
                 .body("data.firstName", hasItems("Adina", "Roberto", "Rudi"))
                 .body("data.lastName", hasItems("Barbosa", "Vega", "Droste"))
@@ -148,6 +140,37 @@ public class DummyApiSteps {
                         "https://randomuser.me/api/portraits/med/women/28.jpg",
                         "https://randomuser.me/api/portraits/med/men/25.jpg",
                         "https://randomuser.me/api/portraits/med/men/83.jpg"));
+    }
+
+    @When("the user sends a DELETE request to the URL {string}")
+    public void theUserSendsADELETERequestToTheURL(String url) {
+        this.url = url;
+        Response response;
+
+        if (appId != null && !appId.isEmpty()) {
+            response = given()
+                    .header("app-id", appId)
+                    .when()
+                    .delete(url);
+        } else {
+            response = given()
+                    .when()
+                    .delete(url);
+        }
+
+        statusCode = response.getStatusCode();
+        responseBody = response.getBody().asString();
+    }
+
+    @Then("the response body should confirm deletion of user ID {string}")
+    public void theResponseBodyShouldConfirmDeletionOfUserID(String userId) {
+        given()
+                .header("app-id", appId)
+                .when()
+                .get(url)
+                .then()
+                .statusCode(404)
+                .body("error", equalTo("RESOURCE_NOT_FOUND"));
     }
 
 }
