@@ -1,12 +1,14 @@
 package dummyapi.steps;
 
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.greaterThanOrEqualTo;
 import static org.hamcrest.Matchers.hasItems;
+
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 
 public class DummyApiSteps {
@@ -170,6 +172,111 @@ public class DummyApiSteps {
                 .then()
                 .statusCode(404)
                 .body("error", equalTo("RESOURCE_NOT_FOUND"));
+    }
+
+    @When("the user sends a PUT request to the URL {string}")
+    public void theUserSendsAPUTRequestToTheURLWithData(String url) {
+        this.url = url;
+        String userData = "{\n" +
+                        "    \"firstName\": \"Dafa\",\n" +
+                        "    \"lastName\": \"Nurul\"\n" +
+                        "}";
+        
+        responseBody = given()
+                .header("app-id", appId)
+                .contentType(ContentType.JSON) // Set content type to JSON
+                .body(userData) // Set request body with user data
+                .when()
+                .put(url)
+                .then()
+                .extract()
+                .asString();
+        
+        statusCode = given()
+                .header("app-id", appId)
+                .contentType(ContentType.JSON) // Set content type to JSON
+                .body(userData) // Set request body with user data
+                .when()
+                .put(url)
+                .then()
+                .extract()
+                .statusCode();
+    }
+
+    @Then("the response body should contain current user data with ID {string}")
+    public void theResponseBodyShouldContainCurrentUserDataWithID(String userId) {
+        given()
+                .header("app-id", appId)
+                .when()
+                .get(url)
+                .then()
+                .statusCode(200)
+                .body("id", equalTo(userId))
+                .body("title", equalTo("mr")) // Updated title
+                .body("firstName", equalTo("Dafa")) // Updated firstName
+                .body("lastName", equalTo("Nurul")) // Updated lastName
+                .body("picture", equalTo("https://example.com/budisantoso.jpg")) // Updated picture URL
+                .body("gender", equalTo("male")) // Updated gender
+                .body("email", equalTo("dafa@example.com")) // Updated email
+                .body("dateOfBirth", equalTo("1985-05-15T00:00:00.000Z")) // Updated dateOfBirth
+                .body("phone", equalTo("+6281234567890")) // Updated phone
+                .body("location.street", equalTo("Jl. Sudirman No. 123")) // Updated street
+                .body("location.city", equalTo("Jakarta")) // Updated city
+                .body("location.state", equalTo("DKI Jakarta")) // Added state
+                .body("location.country", equalTo("Indonesia")) // Updated country
+                .body("registerDate", equalTo("2024-04-28T12:09:26.534Z")); // Updated registerDate
+    }
+
+    @When("the user sends a PUT request with updated firstname to the URL {string}")
+    public void theUserSendsAPUTRequestWithUpdatedFirstnameToTheURLWithData(String url) {
+        this.url = url;
+        String userData = "{\n" +
+                        "    \"firstName\": \"Xynaa\",\n" +
+                        "}";
+        
+        responseBody = given()
+                .header("app-id", appId)
+                .contentType(ContentType.JSON) // Set content type to JSON
+                .body(userData) // Set request body with user data
+                .when()
+                .put(url)
+                .then()
+                .extract()
+                .asString();
+        
+        statusCode = given()
+                .header("app-id", appId)
+                .contentType(ContentType.JSON) // Set content type to JSON
+                .body(userData) // Set request body with user data
+                .when()
+                .put(url)
+                .then()
+                .extract()
+                .statusCode();
+    }
+
+    @Then("the response body should contain updated firstname user data with ID {string}")
+    public void theResponseBodyShouldContainUpdatedFirstnameUserDataWithID(String userId) {
+        given()
+                .header("app-id", appId)
+                .when()
+                .get(url)
+                .then()
+                .statusCode(200)
+                .body("id", equalTo(userId))
+                .body("title", equalTo("mr")) // Updated title
+                .body("firstName", equalTo("Xynaa")) // Updated firstName
+                .body("lastName", equalTo("Nurul")) // Updated lastName
+                .body("picture", equalTo("https://example.com/budisantoso.jpg")) // Updated picture URL
+                .body("gender", equalTo("male")) // Updated gender
+                .body("email", equalTo("dafa@example.com")) // Updated email
+                .body("dateOfBirth", equalTo("1985-05-15T00:00:00.000Z")) // Updated dateOfBirth
+                .body("phone", equalTo("+6281234567890")) // Updated phone
+                .body("location.street", equalTo("Jl. Sudirman No. 123")) // Updated street
+                .body("location.city", equalTo("Jakarta")) // Updated city
+                .body("location.state", equalTo("DKI Jakarta")) // Added state
+                .body("location.country", equalTo("Indonesia")) // Updated country
+                .body("registerDate", equalTo("2024-04-28T12:09:26.534Z")); // Updated registerDate
     }
 
 }
