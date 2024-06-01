@@ -15,10 +15,22 @@ public class DashboardPage {
 
     public boolean isInventoryListDisplayed() {
         WebElement inventoryList = driver.findElement(By.className("inventory_list"));
-        return inventoryList.is_displayed();
+        return inventoryList.isDisplayed();
     }
 
     public List<WebElement> getProductList() {
         return driver.findElements(By.className("inventory_item"));
+    }
+
+    // Click the specific product link by ID
+    public void clickProductById() {
+        WebElement productLink = driver.findElement(By.id("item_4_title_link"));
+        productLink.click();
+    }
+
+    // Click the cart button
+    public void clickCartButton() {
+        WebElement cartButton = driver.findElement(By.className("shopping_cart_link"));
+        cartButton.click();
     }
 }

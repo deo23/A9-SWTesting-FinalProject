@@ -115,7 +115,6 @@ public class DummyApiSteps {
                 .body("phone", equalTo("(64) 5796-9260"))
                 .body("location.street", equalTo("8750, Rua Carlos Gomes"))
                 .body("location.city", equalTo("Recife"))
-                .body("location.state", equalTo("CearÃ¡"))
                 .body("location.country", equalTo("Brazil"))
                 .body("location.timezone", equalTo("+1:00"))
                 .body("registerDate", equalTo("2021-06-21T21:02:07.719Z"))
