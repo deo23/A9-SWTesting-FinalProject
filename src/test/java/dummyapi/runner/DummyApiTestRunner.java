@@ -6,6 +6,6 @@ import io.cucumber.junit.CucumberOptions;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(features = "src/test/resources/features/dummyapi", glue = "dummyapi.steps", plugin = { "pretty",
-        "html:target/cucumber-reports" })
+                "json:target/cucumber-reports/DummyApiReport.json" })
 public class DummyApiTestRunner {
 }

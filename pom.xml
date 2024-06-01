@@ -66,10 +66,11 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.22.2</version>
                 <configuration>
-                    <testFailureIgnore>true</testFailureIgnore>
                     <includes>
-                        <include>**/RunCucumberTest.java</include>
+                        <include>**/DummyApiTestRunner.java</include>
+                        <include>**/SwagLabsTestRunner.java</include>
                     </includes>
+                <testFailureIgnore>true</testFailureIgnore>
                 </configuration>
             </plugin>
             <plugin>

@@ -20,6 +20,6 @@ Scenario: Delete 1 user data not registered in the database
 
 Scenario: Delete 1 user data registered in the database
     Given the app-id in the request header is "662e3849bb70a7aae1259467"
-    When the user sends a DELETE request to the URL "https://dummyapi.io/data/v1/user/60d0fe4f5311236168a109ee"
+    When the user sends a DELETE request to the URL "https://dummyapi.io/data/v1/user/60d0fe4f5311236168a109f2"
     Then the status response should be 200 OK
-    And the response body should confirm deletion of user ID "60d0fe4f5311236168a109ee"
+    And the response body should confirm deletion of user ID "60d0fe4f5311236168a109f2"
