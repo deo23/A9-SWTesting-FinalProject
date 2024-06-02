@@ -53,7 +53,7 @@ Buka proyek menggunakan editor kode pilihan Anda.
 - Perintah untuk menjalankan test case spesifik
   
 ```bash
-mvn test -Dtest=[Test Class name]#[Test case name]
+mvn test -Dcucumber.filter.tags="@Tags"
 ```
 ### Jalankan Uji Aplikasi Swag Labs
 
@@ -61,7 +61,7 @@ mvn test -Dtest=[Test Class name]#[Test case name]
 - Perintah untuk menjalankan test case spesifik:
 
 ```bash
-mvn test -Dcucumber.filter.name="[scenario]"
+mvn test -Dcucumber.filter.tags="@Tags"
 ```
 ## Struktur Proyek
 ```bash
