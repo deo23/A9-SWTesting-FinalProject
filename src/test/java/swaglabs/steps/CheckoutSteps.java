@@ -105,6 +105,13 @@ public class CheckoutSteps {
         checkoutInformationPage.cancel();
     }
 
+    @When("the user fill the shipping details")
+    public void the_user_fill_the_shipping_details() {
+        checkoutInformationPage.fillInformation("Lebron", "James", "40121");
+        checkoutInformationPage.continueToOverview();
+        checkoutOverviewPage = new CheckoutOverviewPage(driver);
+    }
+
     @Then("the system displays the cart page")
     public void the_system_displays_the_cart_page() {
         assertTrue(cartPage.isCartPageLoaded());
