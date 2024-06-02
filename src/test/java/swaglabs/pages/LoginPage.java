@@ -40,4 +40,8 @@ public class LoginPage {
     public boolean isErrorMessageDisplayed() {
         return errorMessage.isDisplayed();
     }
+
+    public boolean isLoginPageDisplayed() {
+        return usernameField.isDisplayed() && passwordField.isDisplayed() && loginButton.isDisplayed();
+    }
 }
