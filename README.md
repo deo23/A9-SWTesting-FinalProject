@@ -63,6 +63,25 @@ mvn test -Dcucumber.filter.tags="@Tags"
 ```bash
 mvn test -Dcucumber.filter.name="scenario name"
 ```
+
+### Jalankan Uji Semua Test Case
+
+- Buka terminal dengan menekan Ctrl + Shift + ~.
+- Perintah untuk menjalankan test case semua:
+
+```bash
+mvn clean test
+```
+
+### Mengenerate Repot
+
+- Buka terminal dengan menekan Ctrl + Shift + ~.
+- Perintah untuk menjalankan generate Repot:
+
+```bash
+mvn clean verify
+```
+
 ## Struktur Proyek
 ```bash
 ├───.vscode
