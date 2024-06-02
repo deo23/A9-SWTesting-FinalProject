@@ -8,8 +8,12 @@ import io.cucumber.java.After;
 import org.openqa.selenium.WebDriver;
 
 import swaglabs.pages.CartPage;
+import swaglabs.pages.CheckoutCompletePage;
+import swaglabs.pages.CheckoutInformationPage;
+import swaglabs.pages.CheckoutOverviewPage;
 import swaglabs.pages.DashboardPage;
 import swaglabs.pages.LoginPage;
+import swaglabs.pages.MenuPage;
 import swaglabs.pages.ProductDetailPage;
 import swaglabs.utils.ChromeDriverSetup;
 
@@ -19,6 +23,10 @@ public class DashboardSteps {
     private LoginPage loginPage;
     private ProductDetailPage productDetailPage;
     private CartPage cartPage;
+    private MenuPage menuPage;
+    private CheckoutCompletePage checkoutCompletePage;
+    private CheckoutInformationPage checkoutInformationPage;
+    private CheckoutOverviewPage checkoutOverviewPage;
 
     @Given("the application is running and successfully logged in")
     public void the_application_is_running_and_successfully_logged_in() {
@@ -32,6 +40,12 @@ public class DashboardSteps {
             loginPage.enterPassword("secret_sauce");
             loginPage.clickLoginButton();
             dashboardPage = new DashboardPage(driver);
+            productDetailPage = new ProductDetailPage(driver);
+            cartPage = new CartPage(driver);
+            menuPage = new MenuPage(driver);
+            checkoutCompletePage = new CheckoutCompletePage(driver);
+            checkoutInformationPage = new CheckoutInformationPage(driver);
+            checkoutOverviewPage = new CheckoutOverviewPage(driver);
             System.out.println("Logged into the dashboard successfully.");
         } catch (Exception e) {
             System.err.println("Error during login: " + e.getMessage());
