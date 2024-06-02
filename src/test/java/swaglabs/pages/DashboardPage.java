@@ -48,4 +48,11 @@ public class DashboardPage {
             throw new IllegalStateException("Cart is empty");
         }
     }
+
+    // Check if the there's a product in the cart
+    public boolean isProductInCart() {
+        WebElement cartItem = driver.findElement(By.className("shopping_cart_badge"));
+        return cartItem.isDisplayed();
+    }
+
 }
