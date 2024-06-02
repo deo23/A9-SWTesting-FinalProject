@@ -25,7 +25,6 @@ public class MenuPage {
         WebElement logoutButton = driver.findElement(By.id("logout_sidebar_link"));
         logoutButton.click();
     }
-//*[@id="inventory_sidebar_link"]
     public void clickAbout() {
         WebElement aboutButton = driver.findElement(By.id("about_sidebar_link"));
         aboutButton.click();
