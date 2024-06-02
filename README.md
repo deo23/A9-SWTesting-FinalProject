@@ -61,7 +61,7 @@ mvn test -Dcucumber.filter.tags="@Tags"
 - Perintah untuk menjalankan test case spesifik:
 
 ```bash
-mvn test -Dcucumber.filter.tags="@Tags"
+mvn test -Dcucumber.filter.name="scenario name"
 ```
 ## Struktur Proyek
 ```bash
