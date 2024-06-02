@@ -1,12 +1,12 @@
 package swaglabs.steps;
 
+import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
-
+import java.util.concurrent.TimeUnit;
 import io.cucumber.java.After;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.junit.Assert;
 import swaglabs.pages.DashboardPage;
 import swaglabs.pages.LoginPage;
 import swaglabs.pages.MenuPage;
@@ -40,6 +40,11 @@ public class MenuSteps {
     @When("the user clicks on the humburger button")
     public void the_user_clicks_on_the_hamburger_menu() {
         menuPage.clickHamburger();
+         try {
+            TimeUnit.SECONDS.sleep(1); // Menunggu selama 1 detik
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     @When("the user clicks on the All Items menu")
