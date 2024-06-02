@@ -26,7 +26,7 @@ Proyek ini merupakan tugas akhir untuk mata kuliah Software Testing. Tujuan utam
 
 Proyek ini memberikan pengalaman praktis dalam pengujian perangkat lunak dan membekali mahasiswa dengan keterampilan untuk karir di bidang ini.
 
-## Persyaratan
+### Persyaratan
 
 Sebelum menjalankan atau berkontribusi pada proyek ini, pastikan sistem Anda memenuhi persyaratan berikut:
 
@@ -43,11 +43,11 @@ Unduh atau salin repositori ini ke dalam sistem Anda:
 ```bash
 git clone https://github.com/deo23/A9-SWTesting-FinalProject.git
 ```
-## Buka Proyek
+### Buka Proyek
 
 Buka proyek menggunakan editor kode pilihan Anda.
 
-##Jalankan Uji API User Controller
+### Jalankan Uji API User Controller
 
 - Buka terminal dengan menekan Ctrl + Shift + ~.
 - Perintah untuk menjalankan test case spesifik
@@ -55,7 +55,7 @@ Buka proyek menggunakan editor kode pilihan Anda.
 ```bash
 mvn test -Dtest=[Test Class name]#[Test case name]
 ```
-##Jalankan Uji Aplikasi Swag Labs
+### Jalankan Uji Aplikasi Swag Labs
 
 - Buka terminal dengan menekan Ctrl + Shift + ~.
 - Perintah untuk menjalankan test case spesifik:
@@ -63,7 +63,7 @@ mvn test -Dtest=[Test Class name]#[Test case name]
 ```bash
 mvn test -Dcucumber.filter.name="[scenario]"
 ```
-### Struktur Proyek
+## Struktur Proyek
 ```bash
 ├───.vscode
 ├───chromedriver-win64
@@ -123,7 +123,7 @@ mvn test -Dcucumber.filter.name="[scenario]"
             └───utils
 ```
 
-### Penulis
+## Penulis
 
 Ditulis oleh Kelompok A9:
 
