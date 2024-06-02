@@ -51,7 +51,7 @@ Buka proyek menggunakan editor kode pilihan Anda.
 
 - Buka terminal dengan menekan Ctrl + Shift + ~.
 - Perintah untuk menjalankan test case spesifik
-- 
+  
 ```bash
 mvn test -Dtest=[Test Class name]#[Test case name]
 ```
