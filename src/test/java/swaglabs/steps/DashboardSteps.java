@@ -10,7 +10,6 @@ import org.openqa.selenium.WebDriver;
 import swaglabs.pages.CartPage;
 import swaglabs.pages.DashboardPage;
 import swaglabs.pages.LoginPage;
-import swaglabs.pages.MenuPage;
 import swaglabs.pages.ProductDetailPage;
 import swaglabs.utils.ChromeDriverSetup;
 
