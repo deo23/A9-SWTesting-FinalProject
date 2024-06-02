@@ -17,7 +17,7 @@ public class MenuPage {
     }
 
     public void clickAllitems() {
-        WebElement allItemsButton = driver.findElement(By.id("inventory_sidebar_link"));
+        WebElement allItemsButton = driver.findElement(By.xpath("//*[@id=\"inventory_sidebar_link\"]"));
         allItemsButton.click();
     }
 
@@ -25,7 +25,6 @@ public class MenuPage {
         WebElement logoutButton = driver.findElement(By.id("logout_sidebar_link"));
         logoutButton.click();
     }
-    
     public void clickAbout() {
         WebElement aboutButton = driver.findElement(By.id("about_sidebar_link"));
         aboutButton.click();
