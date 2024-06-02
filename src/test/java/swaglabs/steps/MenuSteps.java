@@ -2,9 +2,11 @@ package swaglabs.steps;
 
 import org.openqa.selenium.WebDriver;
 
+import io.cucumber.java.After;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
 import swaglabs.pages.DashboardPage;
 import swaglabs.pages.LoginPage;
 import swaglabs.pages.MenuPage;
@@ -45,9 +47,41 @@ public class MenuSteps {
         menuPage.clickAllitems();
     }
 
+    @When("the user clicks on the Logout menu")
+    public void the_user_clicks_on_the_Logout_menu() {
+        menuPage.clickLogout();
+    }
+
+    @When("the user clicks on the About menu")
+    public void the_user_clicks_on_the_About_menu() {
+        menuPage.clickAbout();
+    }
+
     @Then("the system displays All Items on the menu page")
     public void the_system_displays_the_list_of_available_products() {
         assert dashboardPage.isInventoryListDisplayed() : "Inventory list is not displayed";
         assert dashboardPage.getProductList().size() > 0 : "No products displayed";
+    }
+
+    @Then("the system logs out the user and displays the login page")
+    public void the_system_logs_out_the_user_and_displays_the_login_page() {
+        assert loginPage.isLoginPageDisplayed() : "Login page is not displayed";
+    }
+
+    @Then("the system displays the About page")
+    public void the_system_displays_the_About_page() {
+        try {
+            String currentUrl = driver.getCurrentUrl();
+            Assert.assertEquals("https://saucelabs.com/", currentUrl);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @After
+    public void closeBrowser() {
+        if (driver != null) {
+            driver.quit();
+        }
     }
 }

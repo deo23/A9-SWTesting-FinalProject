@@ -20,4 +20,15 @@ public class MenuPage {
         WebElement allItemsButton = driver.findElement(By.id("inventory_sidebar_link"));
         allItemsButton.click();
     }
+
+    public void clickLogout() {
+        WebElement logoutButton = driver.findElement(By.id("logout_sidebar_link"));
+        logoutButton.click();
+    }
+    
+    public void clickAbout() {
+        WebElement aboutButton = driver.findElement(By.id("about_sidebar_link"));
+        aboutButton.click();
+    }
+
 }

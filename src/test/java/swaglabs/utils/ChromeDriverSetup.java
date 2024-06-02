@@ -35,6 +35,12 @@ public class ChromeDriverSetup {
 
         Path driverPath = Paths.get(destDir, chromeDriverFileName);
 
+        // Check if ChromeDriver already exists
+        if (Files.exists(driverPath)) {
+            System.out.println("ChromeDriver already exists. Skipping download.");
+            return;
+        }
+
         // Download ChromeDriver zip file
         try (BufferedInputStream in = new BufferedInputStream(new URL(url).openStream());
              FileOutputStream fileOutputStream = new FileOutputStream(zipFilePath)) {
@@ -71,12 +77,6 @@ public class ChromeDriverSetup {
                 throw new IOException("Failed to set executable permission on the ChromeDriver.");
             }
         }
-
-        // // Check if ChromeDriver already exists
-        // if (Files.exists(driverPath)) {
-        //     System.out.println("ChromeDriver already exists. Skipping download.");
-        //     return;
-        // }
 
         // Clean up: delete the zip file
         Files.deleteIfExists(Paths.get(zipFilePath));
