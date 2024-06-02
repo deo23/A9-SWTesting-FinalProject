@@ -20,7 +20,6 @@ public class DashboardSteps {
     private LoginPage loginPage;
     private ProductDetailPage productDetailPage;
     private CartPage cartPage;
-    private MenuPage menuPage;
 
     @Given("the application is running and successfully logged in")
     public void the_application_is_running_and_successfully_logged_in() {
@@ -34,7 +33,6 @@ public class DashboardSteps {
             loginPage.enterPassword("secret_sauce");
             loginPage.clickLoginButton();
             dashboardPage = new DashboardPage(driver);
-            menuPage = new MenuPage(driver);
             System.out.println("Logged into the dashboard successfully.");
         } catch (Exception e) {
             System.err.println("Error during login: " + e.getMessage());
